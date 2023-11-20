@@ -58,9 +58,9 @@ public class HttpServiceTest {
                 .willReturn(aResponse().withStatus(200).withBody(responseBody2())));
 
         try {
-            CocktailResponse response2 = httpService.getCocktailByFirstLetter(firstLetter);
-            assertEquals("A1", response2.getStrDrink());
-            assertEquals("Alcoholic", response2.getStrAlcoholic());
+            CocktailResponse response = httpService.getCocktailByFirstLetter(firstLetter);
+            assertEquals("A1", response.getStrDrink());
+            assertEquals("Alcoholic", response.getStrAlcoholic());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,9 +74,9 @@ public class HttpServiceTest {
                 .willReturn(aResponse().withStatus(200).withBody(responseBody3())));
 
         try {
-            CocktailResponse response3 = httpService.getCocktailByIngredient(ingredient);
-            assertEquals("1", response3.getIdIngredient());
-            assertEquals("Alcoholic", response3.getStrAlcoholic());
+            CocktailResponse response = httpService.getCocktailByIngredient(ingredient);
+            assertEquals("1", response.getIdIngredient());
+            assertEquals("Alcoholic", response.getStrAlcoholic());
         } catch (Exception e) {
             e.printStackTrace();
         }

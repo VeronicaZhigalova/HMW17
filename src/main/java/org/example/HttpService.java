@@ -43,7 +43,7 @@ public class HttpService {
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             return handleResponse(response, COCKTAIL_RESPONSE_TYPE_REFERENCE);
-        } catch (IOException | InterruptedException e) {
+        } catch (Exception e) {
             throw new RuntimeException("Failed to retrieve cocktail by ID", e);
         }
     }
@@ -54,7 +54,7 @@ public class HttpService {
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             return handleResponse(response, COCKTAIL_RESPONSE_TYPE_REFERENCE);
-        } catch (IOException | InterruptedException e) {
+        } catch (Exception e) {
             throw new RuntimeException("Failed to retrieve cocktail by ID", e);
         }
     }
@@ -65,7 +65,7 @@ public class HttpService {
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             return handleResponse(response, COCKTAIL_RESPONSE_TYPE_REFERENCE);
-        } catch (IOException | InterruptedException e) {
+        } catch (Exception e) {
             throw new RuntimeException("Failed to retrieve cocktail by ID", e);
         }
     }
