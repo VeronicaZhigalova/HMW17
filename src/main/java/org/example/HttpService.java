@@ -37,8 +37,8 @@ public class HttpService {
     public static final String BASE_PATH = "/api/json/v1/1";
 
 
-    public CocktailResponse getCocktailById(String id) {
-        URI uri = URI.create(domain + BASE_PATH + "/search.php?s=" + id);
+    public CocktailResponse getCocktailByName(String name) {
+        URI uri = URI.create(domain + BASE_PATH + "/search.php?s=" + name);
         HttpRequest request = HttpRequest.newBuilder().GET().uri(uri).build();
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
@@ -48,23 +48,23 @@ public class HttpService {
         }
     }
 
-    public CocktailResponse getCocktailById2(String id) {
-        URI uri = URI.create(domain + BASE_PATH + "/search.php?f=" + id);
-        HttpRequest request1 = HttpRequest.newBuilder().GET().uri(uri).build();
+    public CocktailResponse getCocktailByFirstLetter(String firstLetter) {
+        URI uri = URI.create(domain + BASE_PATH + "/search.php?f=" + firstLetter);
+        HttpRequest request = HttpRequest.newBuilder().GET().uri(uri).build();
         try {
-            HttpResponse<String> response1 = httpClient.send(request1, HttpResponse.BodyHandlers.ofString());
-            return handleResponse(response1, COCKTAIL_RESPONSE_TYPE_REFERENCE);
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            return handleResponse(response, COCKTAIL_RESPONSE_TYPE_REFERENCE);
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException("Failed to retrieve cocktail by ID", e);
         }
     }
 
-    public CocktailResponse getCocktailById3(String id) {
-        URI uri = URI.create(domain + BASE_PATH + "/search.php?i=" + id);
-        HttpRequest request2 = HttpRequest.newBuilder().GET().uri(uri).build();
+    public CocktailResponse getCocktailByIngredient(String ingredient) {
+        URI uri = URI.create(domain + BASE_PATH + "/search.php?i=" + ingredient);
+        HttpRequest request = HttpRequest.newBuilder().GET().uri(uri).build();
         try {
-            HttpResponse<String> response2 = httpClient.send(request2, HttpResponse.BodyHandlers.ofString());
-            return handleResponse(response2, COCKTAIL_RESPONSE_TYPE_REFERENCE);
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            return handleResponse(response, COCKTAIL_RESPONSE_TYPE_REFERENCE);
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException("Failed to retrieve cocktail by ID", e);
         }

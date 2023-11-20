@@ -35,14 +35,14 @@ public class HttpServiceTest {
 
 
     @Test
-    void testGetById() {
-        String id = "margarita";
+    void testCocktailByName() {
+        String name = "margarita";
 
-        wireMockExtension.stubFor(WireMock.get(HttpService.BASE_PATH + "/search.php?s=" + id)
+        wireMockExtension.stubFor(WireMock.get(HttpService.BASE_PATH + "/search.php?s=" + name)
                 .willReturn(aResponse().withStatus(200).withBody(responseBody())));
 
         try {
-            CocktailResponse response = httpService.getCocktailById(id);
+            CocktailResponse response = httpService.getCocktailByName(name);
             assertEquals("Margarita", response.getStrDrink());
             assertEquals("Alcoholic", response.getStrAlcoholic());
         } catch (Exception e) {
@@ -51,14 +51,14 @@ public class HttpServiceTest {
     }
 
     @Test
-    void testGetCocktailById2() {
-        String id = "a";
+    void testGetCocktailByFirstLetter() {
+        String firstLetter = "a";
 
-        wireMockExtension.stubFor(WireMock.get(HttpService.BASE_PATH + "/search.php?f=" + id)
+        wireMockExtension.stubFor(WireMock.get(HttpService.BASE_PATH + "/search.php?f=" + firstLetter)
                 .willReturn(aResponse().withStatus(200).withBody(responseBody2())));
 
         try {
-            CocktailResponse response2 = httpService.getCocktailById(id);
+            CocktailResponse response2 = httpService.getCocktailByFirstLetter(firstLetter);
             assertEquals("A1", response2.getStrDrink());
             assertEquals("Alcoholic", response2.getStrAlcoholic());
         } catch (Exception e) {
@@ -67,14 +67,14 @@ public class HttpServiceTest {
     }
 
     @Test
-    void testGetCocktailById3() {
-        String id = "vodka";
+    void testGetCocktailByIngredient() {
+        String ingredient = "vodka";
 
-        wireMockExtension.stubFor(WireMock.get(HttpService.BASE_PATH + "/search.php?i=" + id)
+        wireMockExtension.stubFor(WireMock.get(HttpService.BASE_PATH + "/search.php?i=" + ingredient)
                 .willReturn(aResponse().withStatus(200).withBody(responseBody3())));
 
         try {
-            CocktailResponse response3 = httpService.getCocktailById(id);
+            CocktailResponse response3 = httpService.getCocktailByIngredient(ingredient);
             assertEquals("1", response3.getIdIngredient());
             assertEquals("Alcoholic", response3.getStrAlcoholic());
         } catch (Exception e) {
